@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <%= link_to "Restaurants", restaurants_path, :class => "nav-item nav-link" %>
+      <%= link_to "Add Review", new_restaurant_review_path(@restaurant), :class => "nav-item nav-link" %>
+    </div>
+  </div>
+</nav>
+
+<div class="card">
+  <h3><%= @restaurant.name %></h3>
+  <p><%= @restaurant.category %></p>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <%= link_to "Edit Details", edit_restaurant_path(@restaurant), class: "btn btn-primary"%>
+</div>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.rating %></li>
+    <li class="list-group-item"><%= review.content %></li>
+  <% end %>
+</ul>
